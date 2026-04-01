@@ -9,19 +9,25 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
+import android.view.animation.LinearInterpolator;
+import android.animation.ObjectAnimator;
+import android.widget.ImageView;
 
 public class PlayerActivity extends AppCompatActivity {
 
     private MediaPlayer mediaPlayer;
     private ImageButton btnPlay, btnNext, btnPrevious;
     private SeekBar seekBar;
-
     private TextView txtCurrentTime, txtTotalTime;
+
+    private ImageView imgDisc; // 💿 ảnh xoay
 
     private Handler handler = new Handler();
 
     private ArrayList<String> songList = new ArrayList<>();
     private int currentIndex = 0;
+
+    private ObjectAnimator rotateAnim; // 💿 animation xoay
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +42,11 @@ public class PlayerActivity extends AppCompatActivity {
         btnNext = findViewById(R.id.btnNext);
         btnPrevious = findViewById(R.id.btnPrevious);
         seekBar = findViewById(R.id.seekBar);
+        imgDisc = findViewById(R.id.imgDisc);
 
         String titleStr = getIntent().getStringExtra("title");
         String path = getIntent().getStringExtra("file");
 
-        // 🔥 chống crash
         if (path == null || path.isEmpty()) {
             finish();
             return;
@@ -49,6 +55,12 @@ public class PlayerActivity extends AppCompatActivity {
         title.setText(titleStr != null ? titleStr : "Unknown");
 
         songList.add(path);
+
+        // 💿 setup animation xoay
+        rotateAnim = ObjectAnimator.ofFloat(imgDisc, "rotation", 0f, 360f);
+        rotateAnim.setDuration(10000); // 10s quay 1 vòng
+        rotateAnim.setRepeatCount(ObjectAnimator.INFINITE);
+        rotateAnim.setInterpolator(new LinearInterpolator());
 
         playSong(songList.get(currentIndex));
 
@@ -59,19 +71,17 @@ public class PlayerActivity extends AppCompatActivity {
             if (mediaPlayer.isPlaying()) {
                 mediaPlayer.pause();
                 btnPlay.setImageResource(android.R.drawable.ic_media_play);
+                rotateAnim.pause(); // 💿 dừng xoay
             } else {
                 mediaPlayer.start();
                 btnPlay.setImageResource(android.R.drawable.ic_media_pause);
+                rotateAnim.resume(); // 💿 xoay tiếp
             }
         });
 
-        // NEXT
         btnNext.setOnClickListener(v -> nextSong());
-
-        // PREVIOUS
         btnPrevious.setOnClickListener(v -> prevSong());
 
-        // SEEK
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -84,7 +94,6 @@ public class PlayerActivity extends AppCompatActivity {
         });
     }
 
-    // 🔥 PLAY SONG
     private void playSong(String path) {
         try {
             if (mediaPlayer != null) {
@@ -97,54 +106,50 @@ public class PlayerActivity extends AppCompatActivity {
 
             mediaPlayer.setOnPreparedListener(mp -> {
                 seekBar.setMax(mp.getDuration());
-
                 txtTotalTime.setText(formatTime(mp.getDuration()));
 
                 mp.start();
                 btnPlay.setImageResource(android.R.drawable.ic_media_pause);
+
+                // 💿 bắt đầu xoay
+                rotateAnim.start();
 
                 handler.post(updateSeekBar);
             });
 
             mediaPlayer.setOnCompletionListener(mp -> nextSong());
 
-            mediaPlayer.prepareAsync(); // 🔥 không lag UI
+            mediaPlayer.prepareAsync();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    // NEXT SONG
     private void nextSong() {
-        currentIndex++;
-        if (currentIndex >= songList.size()) currentIndex = 0;
+        currentIndex = (currentIndex + 1) % songList.size();
         playSong(songList.get(currentIndex));
     }
 
-    // PREVIOUS SONG
     private void prevSong() {
-        currentIndex--;
-        if (currentIndex < 0) currentIndex = songList.size() - 1;
+        currentIndex = (currentIndex - 1 < 0)
+                ? songList.size() - 1
+                : currentIndex - 1;
         playSong(songList.get(currentIndex));
     }
 
-    // UPDATE SEEKBAR + TIME
     private Runnable updateSeekBar = new Runnable() {
         @Override
         public void run() {
             if (mediaPlayer != null) {
                 int current = mediaPlayer.getCurrentPosition();
-
                 seekBar.setProgress(current);
                 txtCurrentTime.setText(formatTime(current));
-
                 handler.postDelayed(this, 500);
             }
         }
     };
 
-    // FORMAT TIME
     private String formatTime(int ms) {
         int sec = ms / 1000;
         int min = sec / 60;

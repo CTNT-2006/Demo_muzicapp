@@ -7,20 +7,37 @@
     android:layout_height="match_parent"
     android:padding="20dp">
 
-
+    <!-- ẢNH BÀI HÁT -->
     <ImageView
         android:id="@+id/imgSong"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@mipmap/ic_launcher"
         android:scaleType="centerCrop"
+        android:clipToOutline="true"
+        android:outlineProvider="background"
         android:background="@drawable/image_rounded"
+        android:elevation="4dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintWidth_percent="0.8"
+        app:layout_constraintWidth_percent="0.75"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- ĐĨA XOAY -->
+    <ImageView
+        android:id="@+id/imgDisc"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:src="@drawable/disc"
+        android:alpha="0.9"
+        android:elevation="2dp"
+        app:layout_constraintTop_toTopOf="@id/imgSong"
+        app:layout_constraintBottom_toBottomOf="@id/imgSong"
+        app:layout_constraintStart_toStartOf="@id/imgSong"
+        app:layout_constraintEnd_toEndOf="@id/imgSong"/>
+
+    <!-- TÊN BÀI -->
     <TextView
         android:id="@+id/songTitle"
         android:layout_width="0dp"
@@ -30,11 +47,12 @@
         android:textSize="22sp"
         android:textStyle="bold"
         android:gravity="center"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@id/imgSong"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- ARTIST -->
     <TextView
         android:id="@+id/artist"
         android:layout_width="wrap_content"
@@ -42,12 +60,12 @@
         android:text="Artist"
         android:textColor="#CCFFFFFF"
         android:textSize="16sp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="6dp"
         app:layout_constraintTop_toBottomOf="@id/songTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-
+    <!-- SEEK BAR -->
     <SeekBar
         android:id="@+id/seekBar"
         android:layout_width="0dp"
@@ -56,12 +74,13 @@
         app:layout_constraintTop_toBottomOf="@id/artist"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- TIME -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="4dp"
-
         app:layout_constraintTop_toBottomOf="@id/seekBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -86,7 +105,6 @@
             android:textColor="#FFFFFF"/>
     </LinearLayout>
 
-
     <!-- CONTROLS -->
     <LinearLayout
         android:id="@+id/controlLayout"
@@ -94,7 +112,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintTop_toBottomOf="@id/seekBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -110,14 +128,15 @@
 
         <ImageButton
             android:id="@+id/btnPlay"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/btn_play"
             android:contentDescription="Play"
             android:src="@android:drawable/ic_media_play"
-            app:tint="#FFFFFF"/>
+            app:tint="#FFFFFF"
+            android:elevation="6dp"/>
 
         <ImageButton
             android:id="@+id/btnNext"
