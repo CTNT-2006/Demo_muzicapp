@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_gradient"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp">
+
+    <!-- TITLE -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:text="Đăng nhập"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="80dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!-- USER -->
+    <EditText
+        android:id="@+id/edtUser"
+        android:hint="Username"
+        android:textColor="#FFF"
+        android:textColorHint="#CCC"
+        android:background="@drawable/edt_rounded"
+        android:padding="12dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="55dp"/>
+
+    <!-- PASS -->
+    <EditText
+        android:id="@+id/edtPass"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="#FFF"
+        android:textColorHint="#CCC"
+        android:background="@drawable/edt_rounded"
+        android:padding="12dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/edtUser"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="55dp"/>
+
+    <!-- LOGIN -->
+    <Button
+        android:id="@+id/btnLogin"
+        android:text="Đăng nhập"
+        android:textColor="#FFF"
+        android:background="@drawable/btn_gradient"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/edtPass"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="55dp"/>
+
+    <!-- REGISTER TEXT -->
+    <TextView
+        android:id="@+id/tvRegister"
+        android:text="Bạn chưa có tài khoản? Đăng ký ngay"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/btnLogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

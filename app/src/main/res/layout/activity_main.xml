@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/bg_gradient"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#6A5AE0"/>
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:text="Muzic"
+        android:textColor="#FFFFFF"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Search -->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:queryHint="Search songs..."
+        android:background="@drawable/search_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:iconifiedByDefault="false"
+        android:layout_marginTop="12dp"/>
+
+    <!-- Fragment container -->
+    <FrameLayout
+        android:id="@+id/frameContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!-- Player Bar -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="#8C30FF"
+        android:padding="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:clipToOutline="true"
+        android:elevation="4dp">
+
+
+        <ImageView
+            android:id="@+id/ivPlayPause"
+            android:src="@android:drawable/ic_media_play"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="Play or pause song"
+            app:tint="#FFFFFF"/>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginStart="12dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvSongName"
+                android:text="Tên bài hát"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvArtist"
+                android:text="Ca sĩ"
+                android:textColor="#DDDDDD"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!-- More Options -->
+        <ImageView
+            android:id="@+id/ivMore"
+            android:src="@android:drawable/ic_menu_more"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="More options"
+            app:tint="#FFFFFF"/>
+    </LinearLayout>
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        app:menu="@menu/bottom_menu"/>
+</LinearLayout>
