@@ -1,11 +1,14 @@
 package com.example.demo_muzicapp
 
+import android.graphics.Color
+import android.graphics.LinearGradient
+import android.graphics.Shader
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -20,15 +23,25 @@ class MainActivity : AppCompatActivity() {
 
         // 🔥 DATABASE
         dbHelper = DatabaseHelper(this)
-        addSampleSong() // 👈 QUAN TRỌNG
-
-        // 🔥 TOOLBAR
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
+        addSampleSong()
 
         // 🔥 LOADING
         loading = findViewById(R.id.loading)
+
+        // 🔥 Gradient cho TextView
+        val tvTitle = findViewById<TextView>(R.id.tvTitle)
+        val tvSongName = findViewById<TextView>(R.id.tvSongName)
+        val tvArtist = findViewById<TextView>(R.id.tvArtist)
+
+        val gradientColors = intArrayOf(
+            Color.RED,
+            Color.parseColor("#FFA500"), // cam
+            Color.YELLOW
+        )
+
+        applyGradientText(tvTitle, gradientColors)
+        applyGradientText(tvSongName, gradientColors)
+        applyGradientText(tvArtist, gradientColors)
 
         // 🔥 BOTTOM NAV
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
@@ -46,6 +59,19 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             loadFragment(MusicFragment())
         }
+    }
+
+    // Hàm áp dụng gradient chữ cho TextView
+    private fun applyGradientText(textView: TextView, colors: IntArray) {
+        val paint = textView.paint
+        val width = paint.measureText(textView.text.toString())
+        val shader = LinearGradient(
+            0f, 0f, width, textView.textSize,
+            colors,
+            null,
+            Shader.TileMode.CLAMP
+        )
+        textView.paint.shader = shader
     }
 
     private fun loadFragment(fragment: Fragment) {
@@ -76,7 +102,6 @@ class MainActivity : AppCompatActivity() {
         }, 500)
     }
 
-    // 🔥 THÊM DATA MẪU
     private fun addSampleSong() {
         val list = dbHelper.getAllSongs()
 
@@ -89,7 +114,7 @@ class MainActivity : AppCompatActivity() {
                     "Wiz Khalifa ft. Charlie Puth",
                     "",
                     "",
-                    "android.resource://" + packageName + "/" + R.raw.song1
+                    "android.resource://$packageName/${R.raw.song1}"
                 )
             )
 
@@ -100,7 +125,7 @@ class MainActivity : AppCompatActivity() {
                     "Alan Walker",
                     "",
                     "",
-                    "android.resource://" + packageName + "/" + R.raw.song2
+                    "android.resource://$packageName/${R.raw.song2}"
                 )
             )
 
@@ -111,7 +136,7 @@ class MainActivity : AppCompatActivity() {
                     "Imagine Dragons",
                     "",
                     "",
-                    "android.resource://" + packageName + "/" + R.raw.song3
+                    "android.resource://$packageName/${R.raw.song3}"
                 )
             )
         }

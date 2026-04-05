@@ -6,53 +6,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp">
-
-    <!-- ẢNH BÀI HÁT -->
-    <ImageView
-        android:id="@+id/imgSong"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:src="@mipmap/ic_launcher"
-        android:scaleType="centerCrop"
-        android:clipToOutline="true"
-        android:outlineProvider="background"
-        android:background="@drawable/image_rounded"
-        android:elevation="4dp"
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@android:drawable/ic_media_previous"
+        app:tint="#FFFFFF"
+        android:contentDescription="Back"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintWidth_percent="0.75"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"/>
 
-    <!-- ĐĨA XOAY -->
     <ImageView
         android:id="@+id/imgDisc"
-        android:layout_width="220dp"
-        android:layout_height="220dp"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
         android:src="@drawable/disc"
-        android:alpha="0.9"
-        android:elevation="2dp"
+        android:alpha="0.8"
         app:layout_constraintTop_toTopOf="@id/imgSong"
         app:layout_constraintBottom_toBottomOf="@id/imgSong"
         app:layout_constraintStart_toStartOf="@id/imgSong"
         app:layout_constraintEnd_toEndOf="@id/imgSong"/>
 
     <!-- TÊN BÀI -->
+    <ImageView
+        android:id="@+id/imgSong"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/circle_image"
+        android:clipToOutline="true"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <!-- ARTIST -->
+
     <TextView
         android:id="@+id/songTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
         android:text="Song"
         android:textColor="@android:color/white"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/imgSong"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/imgSong" />
 
-    <!-- ARTIST -->
     <TextView
         android:id="@+id/artist"
         android:layout_width="wrap_content"
@@ -122,9 +131,9 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:background="@drawable/btn_circle"
-            android:contentDescription="Previous"
             android:src="@android:drawable/ic_media_previous"
-            app:tint="#FFFFFF"/>
+            app:tint="#FFFFFF"
+            android:contentDescription="Previous"/>
 
         <ImageButton
             android:id="@+id/btnPlay"
@@ -133,19 +142,19 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/btn_play"
-            android:contentDescription="Play"
             android:src="@android:drawable/ic_media_play"
             app:tint="#FFFFFF"
-            android:elevation="6dp"/>
+            android:elevation="6dp"
+            android:contentDescription="Play"/>
 
         <ImageButton
             android:id="@+id/btnNext"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:background="@drawable/btn_circle"
-            android:contentDescription="Next"
             android:src="@android:drawable/ic_media_next"
-            app:tint="#FFFFFF"/>
+            app:tint="#FFFFFF"
+            android:contentDescription="Next"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

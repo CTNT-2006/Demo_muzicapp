@@ -1,12 +1,12 @@
 package com.example.demo_muzicapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.appcompat.widget.SearchView
-import android.content.Intent
 
 class MusicFragment : Fragment(R.layout.fragment_music) {
 
@@ -14,6 +14,7 @@ class MusicFragment : Fragment(R.layout.fragment_music) {
     private lateinit var dbHelper: DatabaseHelper
     private lateinit var songList: ArrayList<Song>
     private lateinit var adapter: SongAdapter
+    private var currentList: ArrayList<Song> = arrayListOf()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -23,39 +24,38 @@ class MusicFragment : Fragment(R.layout.fragment_music) {
 
         dbHelper = DatabaseHelper(requireContext())
 
-        // Load toàn bộ bài hát
         songList = dbHelper.getAllSongs()
-        adapter = SongAdapter(songList) { clickedSong ->
+        currentList = ArrayList(songList)
+
+        adapter = SongAdapter(currentList) { clickedSong ->
+
+            val index = currentList.indexOf(clickedSong)
 
             val intent = Intent(requireContext(), PlayerActivity::class.java)
-
             intent.putExtra("title", clickedSong.title)
             intent.putExtra("file", clickedSong.file)
-
-            val paths = ArrayList<String>()
-            for (s in songList) {
-                paths.add(s.file)
-            }
-
-            intent.putStringArrayListExtra("list", paths)
-
-
-            intent.putExtra("index", songList.indexOf(clickedSong))
+            intent.putStringArrayListExtra("list", ArrayList(currentList.map { it.file }))
+            intent.putExtra("index", index)
 
             startActivity(intent)
         }
+
         recyclerView.adapter = adapter
 
-        // Search
+
         val searchView = activity?.findViewById<SearchView>(R.id.searchView)
         searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean = false
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                val filtered = songList.filter {
-                    it.title.contains(newText ?: "", true)
+                currentList = if (!newText.isNullOrEmpty()) {
+                    ArrayList(songList.filter {
+                        it.title.contains(newText, ignoreCase = true)
+                    })
+                } else {
+                    ArrayList(songList)
                 }
-                adapter.updateList(filtered)
+                adapter.updateList(currentList)
                 return true
             }
         })

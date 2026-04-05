@@ -1,82 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bg_gradient"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp">
+    android:background="@drawable/bg_gradient"
+    android:padding="24dp"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="45dp">
 
     <!-- TITLE -->
     <TextView
         android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="124dp"
         android:text="Đăng nhập"
+        android:textColor="#FFFFFF"
         android:textSize="26sp"
         android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="80dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- USER -->
     <EditText
         android:id="@+id/edtUser"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/edt_rounded"
         android:hint="Username"
+        android:padding="12dp"
         android:textColor="#FFF"
         android:textColorHint="#CCC"
-        android:background="@drawable/edt_rounded"
-        android:padding="12dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="0dp"
-        android:layout_height="55dp"/>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
     <!-- PASS -->
     <EditText
         android:id="@+id/edtPass"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/edt_rounded"
         android:hint="Password"
         android:inputType="textPassword"
+        android:padding="12dp"
         android:textColor="#FFF"
         android:textColorHint="#CCC"
-        android:background="@drawable/edt_rounded"
-        android:padding="12dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/edtUser"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="0dp"
-        android:layout_height="55dp"/>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtUser" />
 
     <!-- LOGIN -->
     <Button
         android:id="@+id/btnLogin"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/btn_gradient"
         android:text="Đăng nhập"
         android:textColor="#FFF"
-        android:background="@drawable/btn_gradient"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@id/edtPass"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="0dp"
-        android:layout_height="55dp"/>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtPass" />
 
     <!-- REGISTER TEXT -->
     <TextView
         android:id="@+id/tvRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Bạn chưa có tài khoản? Đăng ký ngay"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
-        android:layout_marginTop="20dp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/btnLogin"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnLogin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

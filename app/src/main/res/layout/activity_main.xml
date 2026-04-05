@@ -12,12 +12,6 @@
         android:layout_height="match_parent"
         android:padding="16dp">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:background="@android:color/transparent"/>
-
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
@@ -98,9 +92,9 @@
             android:id="@+id/bottomNav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
-            app:itemIconTint="#6A5AE0"
-            app:itemTextColor="#6A5AE0"
+            android:background="@drawable/bottom_nav_bg"
+            app:itemIconTint="@android:color/white"
+            app:itemTextColor="@android:color/white"
             app:menu="@menu/bottom_menu"/>
     </LinearLayout>
 

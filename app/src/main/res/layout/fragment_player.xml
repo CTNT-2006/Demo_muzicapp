@@ -10,12 +10,13 @@
     <!-- NÚT QUAY LẠI -->
     <ImageButton
         android:id="@+id/btnBack"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:src="@android:drawable/ic_media_previous"
         android:background="@drawable/btn_circle"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="back"/>
 
     <!-- TÊN BÀI HÁT -->
     <TextView
@@ -82,7 +83,8 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:src="@android:drawable/ic_media_previous"
-            android:background="@drawable/btn_circle"/>
+            android:background="@drawable/btn_circle"
+            android:contentDescription="circle"/>
 
         <ImageButton
             android:layout_width="75dp"
@@ -90,13 +92,15 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/btn_play"
-            android:src="@android:drawable/ic_media_play" />
+            android:src="@android:drawable/ic_media_play"
+            android:contentDescription="play"/>
 
         <ImageButton
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:src="@android:drawable/ic_media_next"
-            android:background="@drawable/btn_circle"/>
+            android:background="@drawable/btn_circle"
+            android:contentDescription="play"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
