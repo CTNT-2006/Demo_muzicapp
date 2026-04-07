@@ -1,110 +1,66 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <!-- 🔥 Title Muzic -->
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Muzic"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_margin="16dp"
+        android:textColor="@android:color/white"/>
+
+    <!-- 🔍 Search -->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/txtTitle"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_search"/>
+
+    <!-- 🎵 List nhạc -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:layout_below="@id/searchView"
+        android:layout_above="@id/bottomNav"
+        android:padding="10dp"/>
 
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Muzic"
-            android:textColor="#FFFFFF"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp"/>
-
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:queryHint="Tìm bài hát..."
-            android:background="@drawable/search_bg"
-            android:iconifiedByDefault="false"
-            android:layout_marginTop="12dp"/>
-
-        <FrameLayout
-            android:id="@+id/frameContainer"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="#AA6A5AE0"
-            android:padding="12dp"
-            android:gravity="center_vertical"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:elevation="6dp">
-
-            <ImageView
-                android:id="@+id/ivPlayPause"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@android:drawable/ic_media_play"
-                app:tint="#FFFFFF"/>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp">
-
-                <TextView
-                    android:id="@+id/tvSongName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tên bài hát"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold"
-                    android:textSize="16sp"/>
-
-                <TextView
-                    android:id="@+id/tvArtist"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ca sĩ"
-                    android:textColor="#DDDDDD"
-                    android:textSize="14sp"/>
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/ivMore"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@android:drawable/ic_menu_more"
-                app:tint="#FFFFFF"/>
-        </LinearLayout>
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNav"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bottom_nav_bg"
-            app:itemIconTint="@android:color/white"
-            app:itemTextColor="@android:color/white"
-            app:menu="@menu/bottom_menu"/>
-    </LinearLayout>
-
+    <!-- ⏳ Loading -->
     <ProgressBar
         android:id="@+id/loading"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_centerInParent="true"
-        android:visibility="gone"
-        android:indeterminateTint="#FFFFFF"/>
+        android:visibility="gone"/>
+    <FrameLayout
+        android:id="@+id/frameContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomNav"/>
+
+    <!-- 📱 Bottom Menu -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+        android:background="@android:color/transparent"
+        app:backgroundTint="@android:color/transparent"
+
+        app:itemIconTint="@color/nav_color"
+        app:itemTextColor="@color/nav_color"
+
+        app:menu="@menu/bottom_menu"/>
 
 </RelativeLayout>

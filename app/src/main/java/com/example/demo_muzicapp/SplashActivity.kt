@@ -16,7 +16,8 @@ class SplashActivity : AppCompatActivity() {
     private val handler = Handler(Looper.getMainLooper())
 
     private val runnable = Runnable {
-        startActivity(Intent(this, WelcomeActivity::class.java))
+
+        startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 
@@ -24,10 +25,8 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-
-        // 🔥 THÊM ĐOẠN NÀY
+        // 🔥 LOGO ANIMATION
         val logo = findViewById<ImageView>(R.id.logo)
-
         logo.alpha = 0f
         logo.scaleX = 0.5f
         logo.scaleY = 0.5f
@@ -39,17 +38,18 @@ class SplashActivity : AppCompatActivity() {
             .setDuration(1500)
             .start()
 
-        // delay 2 giây
-        handler.postDelayed(runnable, 2000)
+        // 🔥 TITLE (font + gradient FIX CHUẨN)
         val title = findViewById<TextView>(R.id.title)
+
+        // set font
         title.typeface = resources.getFont(R.font.poppins_bold)
 
-
-        title.addOnLayoutChangeListener { v, _, _, _, _, _, _, _, _ ->
-            val tv = v as TextView
-
+        // 🔥 FIX: dùng post để đảm bảo đã có width → không bị lỗi không hiện màu
+        title.post {
             val shader = LinearGradient(
-                0f, 0f, tv.width.toFloat(), tv.textSize,
+                0f, 0f,
+                title.width.toFloat(),
+                title.textSize,
                 intArrayOf(
                     Color.parseColor("#FF0000"),
                     Color.parseColor("#FF7A00"),
@@ -58,15 +58,15 @@ class SplashActivity : AppCompatActivity() {
                 null,
                 Shader.TileMode.CLAMP
             )
-
-            tv.paint.shader = shader
+            title.paint.shader = shader
         }
 
+        // 🔥 DELAY
+        handler.postDelayed(runnable, 2000)
     }
 
     override fun onDestroy() {
         super.onDestroy()
         handler.removeCallbacks(runnable)
     }
-
 }

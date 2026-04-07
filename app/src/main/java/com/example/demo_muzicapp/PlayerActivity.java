@@ -43,7 +43,7 @@ public class PlayerActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
 
         seekBar = findViewById(R.id.seekBar);
-        imgDisc = findViewById(R.id.imgDisc);
+
         imgSong = findViewById(R.id.imgSong);
 
         // ===== NHẬN DATA =====
