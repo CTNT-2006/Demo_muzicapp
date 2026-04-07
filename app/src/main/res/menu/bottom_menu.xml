@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_music"
+        android:title="Nhạc"
+        android:icon="@drawable/ic_music_vector"/>
+
+    <item
+        android:id="@+id/nav_discovery"
+        android:title="Khám phá"
+        android:icon="@drawable/ic_search_vector"/>
+
+    <item
+        android:id="@+id/nav_profile"
+        android:title="Hồ sơ"
+        android:icon="@drawable/ic_profile_vector"/>
+
+</menu>

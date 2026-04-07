@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- nền tròn gradient -->
+    <path
+        android:fillColor="#6A11CB"
+        android:pathData="M60,10a50,50 0,1 1,0 100a50,50 0,1 1,0 -100"/>
+
+    <!-- nốt nhạc -->
+    <path
+        android:translateX="-5"
+        android:fillColor="#FFFFFF"
+        android:pathData="M70,30v40a10,10 0,1 1,-5 -8v-25l25,-5v35a10,10 0,1 1,-5 -8v-40z"/>
+</vector>
