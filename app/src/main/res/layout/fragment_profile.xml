@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- HEADER -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
                 android:layout_marginTop="10dp"/>
         </LinearLayout>
 
-        <!-- CARD -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,15 +81,6 @@
                 android:textColor="#FFFFFF"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/btn_gradient"/>
-
-            <Button
-                android:id="@+id/btnGuest"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="Guest"
-                android:textColor="#FFFFFF"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/btn_gradient"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -98,17 +89,19 @@
         android:id="@+id/layout_profile_logged"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="50dp"
         android:orientation="vertical"
         android:visibility="gone">
 
-        <!-- HEADER -->
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:padding="16dp"
             android:background="@drawable/bg_card_glass">
 
-            <!-- Avatar -->
+
             <ImageView
                 android:id="@+id/imgAvatar"
                 android:layout_width="70dp"
@@ -117,7 +110,7 @@
                 android:background="@drawable/bg_avatar_circle"
                 android:padding="12dp"/>
 
-            <!-- Name -->
+
             <TextView
                 android:id="@+id/txtName"
                 android:layout_toRightOf="@id/imgAvatar"
@@ -138,7 +131,7 @@
                 android:textColor="#BBBBBB"
                 android:layout_marginTop="4dp"/>
 
-            <!-- Premium -->
+
             <LinearLayout
                 android:id="@+id/btnPremium"
                 android:layout_below="@id/txtName"
@@ -167,12 +160,12 @@
                     android:layout_height="wrap_content"
                     android:textColor="#FFD700"/>
             </LinearLayout>
-
-            <!-- Logout (góc phải) -->
             <LinearLayout
                 android:id="@+id/btnLogout"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
                 android:orientation="horizontal"
                 android:gravity="center"
                 android:background="@drawable/btn_logout"
@@ -196,9 +189,10 @@
                     android:textStyle="bold"
                     android:layout_marginStart="6dp"/>
             </LinearLayout>
+
         </RelativeLayout>
 
-        <!-- ===== OPTIONS (TRONG SUỐT) ===== -->
+
 
         <LinearLayout
             android:layout_width="match_parent"

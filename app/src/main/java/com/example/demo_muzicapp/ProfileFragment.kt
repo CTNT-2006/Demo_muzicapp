@@ -18,12 +18,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     // Guest buttons
     private lateinit var btnLogin: Button
     private lateinit var btnRegister: Button
-    private lateinit var btnGuest: Button
 
     // Logged UI
     private lateinit var txtName: TextView
     private lateinit var txtRole: TextView
-    private lateinit var btnLogout: LinearLayout   // ✅ FIX ở đây
+    private lateinit var btnLogout: LinearLayout
     private lateinit var btnPremium: LinearLayout
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,7 +35,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         // 🔥 Guest buttons
         btnLogin = view.findViewById(R.id.btnLogin)
         btnRegister = view.findViewById(R.id.btnRegister)
-        btnGuest = view.findViewById(R.id.btnGuest)
+
 
         // 🔥 Logged UI
         txtName = view.findViewById(R.id.txtName)
@@ -52,11 +51,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         btnRegister.setOnClickListener {
             startActivity(Intent(requireContext(), RegisterActivity::class.java))
-        }
-
-        btnGuest.setOnClickListener {
-            saveUser("Guest", "Guest")
-            updateUI()
         }
 
         btnLogout.setOnClickListener {

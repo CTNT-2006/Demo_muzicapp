@@ -25,9 +25,10 @@ class LoginActivity : AppCompatActivity() {
 
             val dialogView = layoutInflater.inflate(R.layout.dialog_register, null)
 
-            val edtUserReg = dialogView.findViewById<EditText>(R.id.edtUserReg)
-            val edtPassReg = dialogView.findViewById<EditText>(R.id.edtPassReg)
-            val btnSubmit = dialogView.findViewById<Button>(R.id.btnSubmitReg)
+            val edtUserReg = dialogView.findViewById<EditText>(R.id.edtUser)
+            val edtPassReg = dialogView.findViewById<EditText>(R.id.edtPass)
+
+            val btnSubmit = dialogView.findViewById<Button>(R.id.btnRegister)
 
             val dialog = android.app.AlertDialog.Builder(this)
                 .setView(dialogView)
